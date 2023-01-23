@@ -12,7 +12,7 @@ async function run(): Promise<void> {
     const draft = core.getInput('draft') === 'true'
     const prerelease = core.getInput('prerelease') === 'true'
 
-    const octokit = github.getOctokit(process.env.GITHUB_TOKEN)
+    const octokit = github.getOctokit((process.env.GITHUB_TOKEN as string))
     const r = await octokit.rest.repos.createRelease({
       owner: context.repo.owner,
       repo: context.repo.repo,
